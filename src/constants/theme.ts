@@ -3,24 +3,24 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-import '@/global.css';
+import "@/global.css";
 
-import { Platform } from 'react-native';
+import { Platform } from "react-native";
 
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#fefde4',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    text: "#1f1a17",
+    background: "#f8f3ea",
+    backgroundElement: "#fffaf4",
+    backgroundSelected: "#ece1d1",
+    textSecondary: "#6e6256",
   },
   dark: {
-    text: '#ffffff',
-    background: '#fefde4',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    text: "#f6eee3",
+    background: "#12110f",
+    backgroundElement: "#1b1916",
+    backgroundSelected: "#27231f",
+    textSecondary: "#b2a89d",
   },
 } as const;
 
@@ -29,27 +29,39 @@ export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
 export const Fonts = Platform.select({
   ios: {
     /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
+    sans: "system-ui",
     /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
+    serif: "ui-serif",
     /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
+    rounded: "ui-rounded",
     /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+    mono: "ui-monospace",
   },
   default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
+    sans: "normal",
+    serif: "serif",
+    rounded: "normal",
+    mono: "monospace",
   },
   web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
+    sans: "var(--font-sans)",
+    serif: "var(--font-serif)",
+    rounded: "var(--font-rounded)",
+    mono: "var(--font-mono)",
   },
 });
+
+export const Typography = {
+  h1: { fontSize: 72, lineHeight: 72 },
+  h2: { fontSize: 40, lineHeight: 40 },
+  h3: { fontSize: 30, lineHeight: 30 },
+  h4: { fontSize: 24, lineHeight: 24 },
+  h5: { fontSize: 20, lineHeight: 20 },
+  h6: { fontSize: 18, lineHeight: 18 },
+  h7: { fontSize: 15, lineHeight: 15 },
+  h8: { fontSize: 13, lineHeight: 13 },
+  h9: { fontSize: 11, lineHeight: 11 },
+} as const;
 
 export const Spacing = {
   half: 2,
