@@ -7,7 +7,6 @@ import Animated, {
   type SharedValue,
 } from "react-native-reanimated";
 import { type HomeFeedListItem } from "../../constants/home-feed";
-import { Colors } from "../../constants/theme";
 
 export default function FeedCard({
   item,
@@ -114,18 +113,18 @@ function CardActions({
             : styles.actionsRowCompact,
         ]}
       >
-        <ActionButton label="❤️" />
-        <ActionButton label="✏️" />
-        <ActionButton label="🏷️" />
+        <ActionButton icon={require("@/assets/icons/Like.svg")} />
+        <ActionButton icon={require("@/assets/icons/Edit.svg")} />
+        <ActionButton icon={require("@/assets/icons/Tag.svg")} />
       </View>
     </View>
   );
 }
 
-function ActionButton({ label }: { label: string }) {
+function ActionButton({ icon }: { icon: any }) {
   return (
     <Pressable style={styles.actionButton}>
-      <Text style={styles.actionIcon}>{label}</Text>
+      <Image source={icon} style={styles.actionIcon} contentFit="contain" />
     </Pressable>
   );
 }
@@ -138,6 +137,8 @@ const styles = StyleSheet.create({
   cardStage: {
     position: "relative",
     overflow: "visible",
+    alignItems: "center",
+    justifyContent: "center",
   },
   card: {
     position: "absolute",
@@ -162,15 +163,11 @@ const styles = StyleSheet.create({
   actionsAnchor: {
     position: "absolute",
     zIndex: 15,
-    width: "100%",
+    width: "80%",
     height: "100%",
     overflow: "visible",
   },
   actionsAnchorRow: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
     alignItems: "center",
     justifyContent: "flex-end",
   },
@@ -179,6 +176,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
+    width: "100%",
     alignItems: "flex-end",
   },
   actionsRow: {
@@ -207,11 +205,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 9999,
-    backgroundColor: Colors.light.background,
-    boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.18)",
+    backgroundColor: "#FEFDE4",
+    boxShadow: "0px 1px 3px rgba(239, 225, 174, 1)",
     elevation: 5,
   },
   actionIcon: {
-    fontSize: 22,
+    width: 30,
+    height: 30,
   },
 });

@@ -4,6 +4,7 @@ import { Colors, Fonts } from "@/constants/theme";
 import { useEffect, useMemo, useRef } from "react";
 import {
   FlatList,
+  Image,
   Pressable,
   StyleSheet,
   Text,
@@ -78,7 +79,10 @@ export default function OriginalHomeScreen() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <Pressable style={styles.profileButton}>
-            <Text style={styles.profileIcon}>👤</Text>
+            <Image
+              source={require("@/assets/icons/User.svg")}
+              style={styles.profileIcon}
+            />
           </Pressable>
 
           <Text style={styles.brand}>fitpeak</Text>
@@ -152,8 +156,8 @@ const styles = StyleSheet.create({
     borderRadius: 9999,
   },
   profileIcon: {
-    fontSize: 18,
-    color: "#5d6d7d",
+    width: 30,
+    height: 30,
   },
   brand: {
     fontFamily: Fonts.serif,

@@ -1,3 +1,4 @@
+import { Image } from "expo-image";
 import {
   TabList,
   TabListProps,
@@ -6,7 +7,6 @@ import {
   TabTrigger,
   TabTriggerSlotProps,
 } from "expo-router/ui";
-import { SymbolView } from "expo-symbols";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { Fonts, Spacing } from "@/constants/theme";
@@ -54,24 +54,51 @@ function TabButton({
         <View
           style={[styles.centerButton, isFocused && styles.centerButtonFocused]}
         >
-          <SymbolView
-            tintColor="#FEFDE4"
-            name={{ ios: icon as any, android: icon as any, web: "camera" }}
-            size={24}
+          <Image
+            source={require("@/assets/icons/Camera.svg")}
+            style={styles.centerIcon}
+            contentFit="contain"
           />
         </View>
       ) : (
         <View style={styles.tabButtonView}>
-          <SymbolView
-            tintColor="#64a076"
-            name={{ ios: icon as any, android: icon as any, web: icon as any }}
-            size={20}
-          />
+          <TabIcon icon={icon} focused={Boolean(isFocused)} />
           <Text style={[styles.label, { color: "#64a076" }]}>{label}</Text>
         </View>
       )}
     </Pressable>
   );
+}
+
+function TabIcon({ icon, focused }: { icon: string; focused: boolean }) {
+  const source = getTabIconSource(icon, focused);
+
+  return <Image source={source} style={styles.tabIcon} />;
+}
+
+function getTabIconSource(icon: string, focused: boolean) {
+  switch (icon) {
+    case "house":
+      return focused
+        ? require("@/assets/icons/HomePress.svg")
+        : require("@/assets/icons/Home.svg");
+    case "magnifyingglass":
+      return focused
+        ? require("@/assets/icons/SearchPress.svg")
+        : require("@/assets/icons/Search.svg");
+    case "camera.fill":
+      return require("@/assets/icons/Camera.svg");
+    case "calendar":
+      return focused
+        ? require("@/assets/icons/CalendarPress.svg")
+        : require("@/assets/icons/Calendar.svg");
+    case "folder":
+      return focused
+        ? require("@/assets/icons/TagPress.svg")
+        : require("@/assets/icons/Tag.svg");
+    default:
+      return require("@/assets/icons/Tag.svg");
+  }
 }
 
 function CustomTabList({ children, ...props }: TabListProps) {
@@ -99,6 +126,7 @@ const styles = StyleSheet.create({
     zIndex: 40,
     elevation: 40,
     backgroundColor: "#FEFDE4",
+    overflow: "visible",
   },
   innerContainer: {
     paddingVertical: Spacing.two,
@@ -117,7 +145,15 @@ const styles = StyleSheet.create({
   tabButtonView: {
     alignItems: "center",
     justifyContent: "center",
-    minWidth: 58,
+    minWidth: 60,
+  },
+  tabIcon: {
+    width: 22,
+    height: 22,
+  },
+  centerIcon: {
+    width: 24,
+    height: 24,
   },
   centerButton: {
     height: 48,
