@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.serif,
     fontSize: 42,
     lineHeight: 42,
-    color: "var(--color-sage-900)",
+    color: "#233829",
     letterSpacing: -0.8,
   },
   headerSpacer: {

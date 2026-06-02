@@ -63,7 +63,7 @@ function TabButton({
       ) : (
         <View style={styles.tabButtonView}>
           <TabIcon icon={icon} focused={Boolean(isFocused)} />
-          <Text style={[styles.label, { color: "#64a076" }]}>{label}</Text>
+          <Text style={[styles.label, { color: "#5A906A" }]}>{label}</Text>
         </View>
       )}
     </Pressable>
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 14,
-    backgroundColor: "#64a076",
+    backgroundColor: "#5A906A",
     boxShadow: "0px 4px 8px rgba(140, 163, 127, 0.28)",
     elevation: 4,
   },
@@ -170,8 +170,8 @@ const styles = StyleSheet.create({
   },
   label: {
     marginTop: 2,
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: Fonts.serif,
-    color: "#64a076",
+    color: "#5A906A",
   },
 });

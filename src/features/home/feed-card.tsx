@@ -68,7 +68,6 @@ export default function FeedCard({
             {
               width: cardWidth,
               height: cardHeight,
-              borderColor: "#d9cfaf",
             },
           ]}
         >
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     overflow: "hidden",
     borderWidth: 1,
-    backgroundColor: "#efe4d2",
+    borderColor: "#FEFDE4",
   },
   cardImage: {
     ...StyleSheet.absoluteFill,
