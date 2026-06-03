@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @theme {
   --text-h1: 72px;
   --text-h1--line-height: normal;

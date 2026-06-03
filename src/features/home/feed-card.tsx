@@ -16,6 +16,7 @@ export default function FeedCard({
   cardWidth,
   cardHeight,
   isWideLayout,
+  actionsheetProps,
 }: {
   item: HomeFeedListItem;
   index: number;
@@ -24,6 +25,11 @@ export default function FeedCard({
   cardWidth: number;
   cardHeight: number;
   isWideLayout: boolean;
+  actionsheetProps: {
+    isOpen: boolean;
+    onOpenChange: (open: boolean) => void;
+    item: HomeFeedListItem;
+  };
 }) {
   const animatedStyle = useAnimatedStyle(() => {
     const distance = index * pageExtent - scrollY.value;
@@ -80,7 +86,11 @@ export default function FeedCard({
           <Text style={styles.chevron}>⌄</Text>
         </View>
 
-        <CardActions isWideLayout={isWideLayout} cardHeight={cardHeight} />
+        <CardActions
+          isWideLayout={isWideLayout}
+          cardHeight={cardHeight}
+          actionsheetProps={actionsheetProps}
+        />
       </View>
     </Animated.View>
   );
@@ -89,9 +99,15 @@ export default function FeedCard({
 function CardActions({
   isWideLayout,
   cardHeight,
+  actionsheetProps,
 }: {
   isWideLayout: boolean;
   cardHeight: number;
+  actionsheetProps: {
+    isOpen: boolean;
+    onOpenChange: (open: boolean) => void;
+    item: HomeFeedListItem;
+  };
 }) {
   return (
     <View
@@ -114,15 +130,31 @@ function CardActions({
       >
         <ActionButton icon={require("@/assets/icons/Like.svg")} />
         <ActionButton icon={require("@/assets/icons/Edit.svg")} />
-        <ActionButton icon={require("@/assets/icons/Tag.svg")} />
+        <ActionButton
+          icon={require("@/assets/icons/Tag.svg")}
+          actionsheetProps={actionsheetProps}
+        />
       </View>
     </View>
   );
 }
 
-function ActionButton({ icon }: { icon: any }) {
+function ActionButton({
+  icon,
+  actionsheetProps,
+}: {
+  icon: any;
+  actionsheetProps?: {
+    isOpen: boolean;
+    onOpenChange: (open: boolean) => void;
+    item: HomeFeedListItem;
+  };
+}) {
   return (
-    <Pressable style={styles.actionButton}>
+    <Pressable
+      style={styles.actionButton}
+      onPress={() => actionsheetProps?.onOpenChange(true)}
+    >
       <Image source={icon} style={styles.actionIcon} contentFit="contain" />
     </Pressable>
   );

@@ -10,6 +10,8 @@ import { StatusBar } from "expo-status-bar";
 import "../global.css";
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import AppTabs from "@/components/app-tabs";
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
+import '@/global.css';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,10 +32,12 @@ export default function TabLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <GluestackUIProvider mode="dark">
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <AnimatedSplashOverlay />
       <AppTabs />
       <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
     </ThemeProvider>
+    </GluestackUIProvider>
   );
 }

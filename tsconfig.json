@@ -3,8 +3,16 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@/assets/*": ["./assets/*"]
+      "@/*": [
+        "./src/*",
+        "./*"
+      ],
+      "@/assets/*": [
+        "./assets/*"
+      ],
+      "tailwind.config": [
+        "./tailwind.config.js"
+      ]
     }
   },
   "include": [
@@ -12,6 +20,7 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "src/features/home/feed-card.tsx"
+    "src/features/home/feed-card.tsx",
+    "nativewind-env.d.ts"
   ]
 }
